@@ -1,9 +1,9 @@
 ---
 title: Sample Vector1
 date: 2019-09-09T08:47:46.649Z
-description: This is an SVG
+image: /comics/sample-vector1.svg
 tags:
   - batch1
-  - batch2
-image: /comics/sample-vector1.svg
+description: This is an SVG
 ---
+
