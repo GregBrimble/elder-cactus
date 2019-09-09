@@ -1,16 +1,10 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
-  Gatsby's blog starter
+  <a href="https://project-squeeb.netlify.com/">
+    Project Squeeb
+  </a>
 </h1>
 
-Kick off your project with this blog boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
-
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+[![Netlify Status](https://api.netlify.com/api/v1/badges/89ddbc6a-ae07-4842-ae60-854e20d43530/deploy-status)](https://app.netlify.com/sites/project-squeeb/deploys)
 
 ## 🚀 Quick start
 
