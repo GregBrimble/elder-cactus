@@ -6,6 +6,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const comicPage = path.resolve(`./src/templates/comic.js`)
+  const tagPage = path.resolve(`./src/templates/tag.js`)
   const result = await graphql(
     `
       {
@@ -19,6 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               frontmatter {
                 title
+                tags
               }
             }
           }
@@ -32,6 +34,17 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const comics = result.data.allMarkdownRemark.edges
+  const tags = [...new Set(comics.map(comic => comic.node.frontmatter.tags).flat())]
+
+  tags.forEach((tag) => {
+    createPage({
+      path: `tags/${tag}`,
+      component: tagPage,
+      context: {
+        tag
+      }
+    })
+  })
 
   comics.forEach((comic, index) => {
     const previous = index === comics.length - 1 ? null : comics[index + 1].node

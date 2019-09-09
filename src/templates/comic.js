@@ -12,8 +12,15 @@ class ComicTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
     const image = post.frontmatter.image
+    let section
 
-    console.log(post.frontmatter)
+    if (image) {
+      if (!image.childImageSharp && image.extension === 'svg') {
+        section = <img src={image.publicURL} />
+      } else {
+        section = <Image fluid={image.childImageSharp.fluid} />
+      }
+    }
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -42,7 +49,7 @@ class ComicTemplate extends React.Component {
             </p>
           </header>
           <section>
-            {image && (<Image fluid={image.childImageSharp.fluid} />)}
+            {section}
           </section>
         </article>
 
@@ -94,12 +101,15 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tags
         image {
           childImageSharp {
             fluid(maxWidth: 680) {
               ...GatsbyImageSharpFluid
             }
           }
+          extension
+          publicURL
         }
       }
     }
