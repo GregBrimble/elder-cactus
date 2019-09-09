@@ -2,18 +2,18 @@ module.exports = {
   siteMetadata: {
     title: `Project Squeeb`,
     author: `Greg Brimble`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `Project Squeeb`,
+    siteUrl: `https://project-squeeb.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `gregbrimble`,
     },
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        path: `${__dirname}/static/comics`,
+        name: `comicssss`,
       },
     },
     {
@@ -30,10 +30,13 @@ module.exports = {
         name: `comics`,
       },
     },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-relative-images`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -52,8 +55,6 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -64,8 +65,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Project Squeeb`,
+        short_name: `Project Squeeb`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
