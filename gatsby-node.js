@@ -50,6 +50,18 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
+  const { frontmatter } = node
+  if (frontmatter) {
+    const { image } = frontmatter
+    if (image) {
+      if (image.indexOf('/comics') === 0) {
+        frontmatter.image = path.relative(
+          path.dirname(node.fileAbsolutePath),
+          path.join(__dirname, '/static/', image)
+        )
+      }
+    }
+  }
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })

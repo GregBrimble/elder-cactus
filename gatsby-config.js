@@ -1,10 +1,3 @@
-const netlfiyCmsPaths = {
-  resolve: `gatsby-plugin-netlify-cms-paths`,
-  options: {
-    cmsConfig: `/static/admin/config.yml`,
-  }
-}
-
 module.exports = {
   siteMetadata: {
     title: `Project Squeeb`,
@@ -30,12 +23,10 @@ module.exports = {
         name: `comics`,
       },
     },
-    netlfiyCmsPaths,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          netlfiyCmsPaths,
           {
             resolve: `gatsby-remark-images`,
             options: {

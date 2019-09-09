@@ -42,7 +42,7 @@ class ComicTemplate extends React.Component {
             </p>
           </header>
           <section>
-            {image && (<Image fluid={image.childImageSharp.fluid} />)}
+            {/* {image && (<Image fluid={image.childImageSharp.fluid} />)} */}
           </section>
         </article>
 
@@ -94,13 +94,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        image {
-          childImageSharp {
-            fluid(maxWidth: 680) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        # image {
+        #   childImageSharp {
+        #     fluid(maxWidth: 680) {
+        #       ...GatsbyImageSharpFluid
+        #     }
+        #   }
+        # }
       }
     }
   }

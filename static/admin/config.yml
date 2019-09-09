@@ -4,6 +4,7 @@ backend:
 
 publish_mode: editorial_workflow
 
+media_folder_relative: true
 media_folder: static/comics
 public_folder: /comics
 
