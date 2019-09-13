@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -11,12 +10,13 @@ class TagsPage extends React.Component {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const comics = data.allMarkdownRemark.edges
-    const tags = [...new Set(comics.map(comic => comic.node.frontmatter.tags).flat())]
+    const tags = [
+      ...new Set(comics.map(comic => comic.node.frontmatter.tags).flat()),
+    ]
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Tags" />
-        {/* <Bio /> */}
         {tags.map(tag => {
           return (
             <article key={tag}>

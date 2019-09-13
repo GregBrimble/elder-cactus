@@ -1,12 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Project Squeeb`,
-    author: `Greg Brimble`,
-    description: `Project Squeeb`,
-    siteUrl: `https://project-squeeb.netlify.com/`,
-    social: {
-      twitter: `gregbrimble`,
-    },
+    title: `Elder Cactus`,
+    author: `Tim Lavoie`,
+    description: `Elder Cactus`,
+    siteUrl: `https://www.eldercactus.com/`,
   },
   plugins: [
     {
@@ -55,18 +52,12 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Project Squeeb`,
-        short_name: `Project Squeeb`,
+        name: `Elder Cactus`,
+        short_name: `Elder Cactus`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -82,6 +73,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    `gatsby-plugin-netlify-cms`
+    `gatsby-plugin-netlify-cms`,
   ],
 }

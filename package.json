@@ -1,7 +1,7 @@
 {
-  "name": "project-squeeb",
+  "name": "elder-cactus",
   "private": true,
-  "description": "Project Squeeb",
+  "description": "Elder Cactus",
   "version": "0.1.0",
   "author": {
     "name": "Greg Brimble",
@@ -9,13 +9,12 @@
     "url": "https://gregbrimble.com/"
   },
   "bugs": {
-    "url": "https://github.com/gregbrimble/project-squeeb/issues"
+    "url": "https://github.com/gregbrimble/elder-cactus/issues"
   },
   "dependencies": {
     "gatsby": "^2.15.11",
     "gatsby-image": "^2.2.17",
     "gatsby-plugin-feed": "^2.3.11",
-    "gatsby-plugin-google-analytics": "^2.1.15",
     "gatsby-plugin-manifest": "^2.2.15",
     "gatsby-plugin-netlify-cms": "^4.1.13",
     "gatsby-plugin-offline": "^2.2.10",
@@ -45,18 +44,17 @@
   "devDependencies": {
     "prettier": "^1.18.2"
   },
-  "homepage": "https://project-squeeb.netlify.com/",
+  "homepage": "https://www.eldercactus.com/",
   "license": "TODO",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gregbrimble/project-squeeb.git"
+    "url": "git+https://github.com/gregbrimble/elder-cactus.git"
   },
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
-    "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
+    "serve": "gatsby serve"
   }
 }
