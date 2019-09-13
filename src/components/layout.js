@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -62,9 +63,7 @@ class Layout extends React.Component {
       >
         <header>{header}</header>
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Tim Lavoie
-        </footer>
+        <footer>© {new Date().getFullYear()}, Tim Lavoie</footer>
       </div>
     )
   }

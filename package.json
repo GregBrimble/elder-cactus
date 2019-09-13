@@ -12,6 +12,7 @@
     "url": "https://github.com/gregbrimble/elder-cactus/issues"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "gatsby": "^2.15.11",
     "gatsby-image": "^2.2.17",
     "gatsby-plugin-feed": "^2.3.11",
@@ -33,6 +34,7 @@
     "netlify-cms-app": "^2.9.7",
     "prismjs": "^1.17.1",
     "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
