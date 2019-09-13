@@ -62,11 +62,16 @@ class HomePage extends React.Component {
                   alt={`Patreon`}
                 ></Image>
               </a>
-              TODO: Link
-              <Image
-                fluid={data.youtube.childImageSharp.fluid}
-                alt={`YouTube`}
-              ></Image>
+              <a
+                href={`https://www.youtube.com/channel/UCi-2kUme4vi-n4ST_9UVc1A`}
+                target={`_blank`}
+                rel={`noopener noreferrer`}
+              >
+                <Image
+                  fluid={data.youtube.childImageSharp.fluid}
+                  alt={`YouTube`}
+                ></Image>
+              </a>
               <a
                 href={`https://twitter.com/eldercactus`}
                 target={`_blank`}
