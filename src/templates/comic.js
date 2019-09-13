@@ -15,7 +15,7 @@ class ComicTemplate extends React.Component {
     let section
 
     if (image) {
-      if (!image.childImageSharp && image.extension === 'svg') {
+      if (!image.childImageSharp && image.extension === "svg") {
         section = <img src={image.publicURL} />
       } else {
         section = <Image fluid={image.childImageSharp.fluid} />
@@ -38,19 +38,8 @@ class ComicTemplate extends React.Component {
             >
               {post.frontmatter.title}
             </h1>
-            <p
-              style={{
-                ...scale(-1 / 5),
-                display: `block`,
-                marginBottom: rhythm(1),
-              }}
-            >
-              {post.frontmatter.date}
-            </p>
           </header>
-          <section>
-            {section}
-          </section>
+          <section>{section}</section>
         </article>
 
         <nav>
@@ -65,15 +54,33 @@ class ComicTemplate extends React.Component {
           >
             <li>
               {previous && (
-                <Link to={previous.fields.slug} rel="prev">
-                  ← {previous.frontmatter.title}
+                <Link
+                  style={{
+                    boxShadow: `none`,
+                    textDecoration: `none`,
+                    color: `inherit`,
+                  }}
+                  to={previous.fields.slug}
+                  rel="prev"
+                >
+                  <Image
+                    fixed={this.props.data.previous.childImageSharp.fixed}
+                  />
                 </Link>
               )}
             </li>
             <li>
               {next && (
-                <Link to={next.fields.slug} rel="next">
-                  {next.frontmatter.title} →
+                <Link
+                  style={{
+                    boxShadow: `none`,
+                    textDecoration: `none`,
+                    color: `inherit`,
+                  }}
+                  to={next.fields.slug}
+                  rel="next"
+                >
+                  <Image fixed={this.props.data.next.childImageSharp.fixed} />
                 </Link>
               )}
             </li>
@@ -91,7 +98,20 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
-        author
+      }
+    }
+    previous: file(absolutePath: { regex: "/button_Previous.png/" }) {
+      childImageSharp {
+        fixed(width: 180) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    next: file(absolutePath: { regex: "/button_Next.png/" }) {
+      childImageSharp {
+        fixed(width: 180) {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -99,9 +119,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
         description
-        tags
         image {
           childImageSharp {
             fluid(maxWidth: 680) {

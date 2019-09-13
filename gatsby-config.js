@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `Elder Cactus`,
     author: `Tim Lavoie`,
-    description: `Elder Cactus`,
+    description: `Comic Strip created by college dropout, Tim Lavoie`,
     siteUrl: `https://www.eldercactus.com/`,
   },
   plugins: [
@@ -10,7 +10,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/static/comics`,
-        name: `comicssss`,
+        name: `comics_posts`,
       },
     },
     {
@@ -59,8 +59,8 @@ module.exports = {
         name: `Elder Cactus`,
         short_name: `Elder Cactus`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#000000`,
+        background_color: `#e0c360`,
+        theme_color: `#5ecc56`,
         display: `minimal-ui`,
         icon: `content/assets/favicon_ElderCactus.png`,
       },

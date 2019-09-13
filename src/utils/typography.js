@@ -6,10 +6,19 @@ Wordpress2016.overrideThemeStyles = () => {
     "a.gatsby-resp-image-link": {
       boxShadow: `none`,
     },
+    "*": {
+      fontFamily: "Montserrat",
+      fontWeight: 600,
+    },
   }
 }
 
-delete Wordpress2016.googleFonts
+Wordpress2016.googleFonts = [
+  {
+    name: "Montserrat",
+    styles: ["600"],
+  },
+]
 
 const typography = new Typography(Wordpress2016)
 
