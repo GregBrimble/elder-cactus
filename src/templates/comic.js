@@ -16,9 +16,16 @@ class ComicTemplate extends React.Component {
 
     if (image) {
       if (!image.childImageSharp && image.extension === "svg") {
-        section = <img src={image.publicURL} />
+        section = (
+          <img src={image.publicURL} alt={post.frontmatter.description} />
+        )
       } else {
-        section = <Image fluid={image.childImageSharp.fluid} />
+        section = (
+          <Image
+            fluid={image.childImageSharp.fluid}
+            alt={post.frontmatter.description}
+          />
+        )
       }
     }
 
@@ -65,6 +72,7 @@ class ComicTemplate extends React.Component {
                 >
                   <Image
                     fixed={this.props.data.previous.childImageSharp.fixed}
+                    alt="Previous"
                   />
                 </Link>
               )}
@@ -80,7 +88,10 @@ class ComicTemplate extends React.Component {
                   to={next.fields.slug}
                   rel="next"
                 >
-                  <Image fixed={this.props.data.next.childImageSharp.fixed} />
+                  <Image
+                    fixed={this.props.data.next.childImageSharp.fixed}
+                    alt="Next"
+                  />
                 </Link>
               )}
             </li>
