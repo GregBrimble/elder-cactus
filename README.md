@@ -41,7 +41,7 @@
 
    The Comic is now available in the **`Workflow`** tab under the `Drafts` state. After a short while, a Preview will be generated (click `Check for Preview` or refresh the page). **A Preview is an entire separate deployment to production, but with the new Post included.** (e.g. https://deploy-preview-13--elder-cactus.netlify.com/temp-test/). This lets you confirm how the new Comic will be displayed before publishing it to the production deployment.
 
-1. Once you're satisfied with the new Comic, select `Publish → Publish Now`.
+1. Once you're satisfied with the new Comic, select `Publish` → `Publish Now`.
 
    Again, after a short while, the Comic should appear on the production deployment identically to how it appeared in the Preview.
 
