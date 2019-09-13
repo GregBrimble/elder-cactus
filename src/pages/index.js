@@ -52,11 +52,16 @@ class HomePage extends React.Component {
                   alt={`Subreddit`}
                 ></Image>
               </a>
-              TODO: Link
-              <Image
-                fluid={data.patreon.childImageSharp.fluid}
-                alt={`Patreon`}
-              ></Image>
+              <a
+                href={`https://www.patreon.com/eldercactus`}
+                target={`_blank`}
+                rel={`noopener noreferrer`}
+              >
+                <Image
+                  fluid={data.patreon.childImageSharp.fluid}
+                  alt={`Patreon`}
+                ></Image>
+              </a>
               TODO: Link
               <Image
                 fluid={data.youtube.childImageSharp.fluid}
