@@ -25,6 +25,8 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
+  const socialTile = "https://eldercactus.com/tile.png"
+  const socialLogo = "https://eldercactus.com/logo.png"
   const metaDescription = description || site.siteMetadata.description
 
   return (
@@ -52,12 +54,16 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: "og:image",
+          content: socialTile,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: "@eldercactus",
         },
         {
           name: `twitter:title`,
@@ -66,6 +72,10 @@ function SEO({ description, lang, meta, title }) {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: "twitter:image",
+          content: socialLogo,
         },
       ].concat(meta)}
     />
