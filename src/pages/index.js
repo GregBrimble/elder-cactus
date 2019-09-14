@@ -26,7 +26,7 @@ class HomePage extends React.Component {
                 ></Image>
               </Link>
               <a
-                href={`https://www.youtube.com/watch?v=uiINuHxz160`}
+                href={data.site.siteMetadata.social.knightQuest}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
               >
@@ -35,15 +35,20 @@ class HomePage extends React.Component {
                   alt={`KnightQuest`}
                 ></Image>
               </a>
-              TODO: Link
-              <Image
-                fluid={data.facebook.childImageSharp.fluid}
-                alt={`Facebook`}
-              ></Image>
+              <a
+                href={data.site.siteMetadata.social.facebook}
+                target={`_blank`}
+                rel={`noopener noreferrer`}
+              >
+                <Image
+                  fluid={data.facebook.childImageSharp.fluid}
+                  alt={`Facebook`}
+                ></Image>
+              </a>
             </Col>
             <Col sm={5}>
               <a
-                href={`https://old.reddit.com/r/eldercactus/`}
+                href={data.site.siteMetadata.social.reddit}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
               >
@@ -53,7 +58,7 @@ class HomePage extends React.Component {
                 ></Image>
               </a>
               <a
-                href={`https://www.patreon.com/eldercactus`}
+                href={data.site.siteMetadata.social.patreon}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
               >
@@ -63,7 +68,7 @@ class HomePage extends React.Component {
                 ></Image>
               </a>
               <a
-                href={`https://www.youtube.com/channel/UCi-2kUme4vi-n4ST_9UVc1A`}
+                href={data.site.siteMetadata.social.youTube}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
               >
@@ -73,7 +78,7 @@ class HomePage extends React.Component {
                 ></Image>
               </a>
               <a
-                href={`https://twitter.com/eldercactus`}
+                href={data.site.siteMetadata.social.twitter}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
               >
@@ -146,6 +151,14 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        social {
+          knightQuest
+          facebook
+          reddit
+          patreon
+          youTube
+          twitter
+        }
       }
     }
   }

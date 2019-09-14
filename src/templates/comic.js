@@ -17,13 +17,18 @@ class ComicTemplate extends React.Component {
     if (image) {
       if (!image.childImageSharp && image.extension === "svg") {
         section = (
-          <img src={image.publicURL} alt={post.frontmatter.description} />
+          <img
+            src={image.publicURL}
+            alt={post.frontmatter.description}
+            title={post.frontmatter.description}
+          />
         )
       } else {
         section = (
           <Image
             fluid={image.childImageSharp.fluid}
             alt={post.frontmatter.description}
+            title={post.frontmatter.description}
           />
         )
       }
@@ -40,13 +45,19 @@ class ComicTemplate extends React.Component {
             <h1
               style={{
                 marginTop: rhythm(1),
-                marginBottom: 0,
+                marginBottom: rhythm(1),
               }}
             >
               {post.frontmatter.title}
             </h1>
           </header>
-          <section>{section}</section>
+          <section
+            style={{
+              marginBottom: rhythm(0.5),
+            }}
+          >
+            {section}
+          </section>
         </article>
 
         <nav>

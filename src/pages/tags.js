@@ -24,6 +24,7 @@ class TagsPage extends React.Component {
                 <h3
                   style={{
                     marginBottom: rhythm(1 / 4),
+                    fontSize: rhythm(0.9),
                   }}
                 >
                   <Link style={{ boxShadow: `none` }} to={`/tags/${tag}`}>

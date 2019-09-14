@@ -4,6 +4,14 @@ module.exports = {
     author: `Tim Lavoie`,
     description: `Comic Strip created by college dropout, Tim Lavoie`,
     siteUrl: `https://www.eldercactus.com/`,
+    social: {
+      knightQuest: "https://www.youtube.com/watch?v=uiINuHxz160",
+      facebook: "https://www.facebook.com/Elder-Cactus-Comics-106361110754353",
+      reddit: "https://old.reddit.com/r/eldercactus/",
+      patreon: "https://www.patreon.com/eldercactus",
+      youTube: "https://www.youtube.com/channel/UCi-2kUme4vi-n4ST_9UVc1A",
+      twitter: "https://twitter.com/eldercactus",
+    },
   },
   plugins: [
     {
@@ -65,7 +73,6 @@ module.exports = {
         icon: `content/assets/favicon_ElderCactus.png`,
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
