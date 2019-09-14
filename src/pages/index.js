@@ -14,7 +14,11 @@ class HomePage extends React.Component {
     const siteTitle = data.site.siteMetadata.title
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        location={this.props.location}
+        title={siteTitle}
+        titleImage={data.titleImage}
+      >
         <SEO title="Home" />
         <Container>
           <Row>
@@ -158,6 +162,13 @@ export const pageQuery = graphql`
           patreon
           youTube
           twitter
+        }
+      }
+    }
+    titleImage: file(absolutePath: { regex: "/image_Title.png/" }) {
+      childImageSharp {
+        fixed(width: 400) {
+          ...GatsbyImageSharpFixed
         }
       }
     }

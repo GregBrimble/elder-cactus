@@ -1,12 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
+import Image from "gatsby-image"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import { rhythm, scale } from "../utils/typography"
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
+    const { location, children, titleImage } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
 
@@ -27,7 +28,7 @@ class Layout extends React.Component {
             }}
             to={`/`}
           >
-            {title}
+            <Image fixed={titleImage.childImageSharp.fixed} />
           </Link>
         </h1>
       )
@@ -47,7 +48,7 @@ class Layout extends React.Component {
             }}
             to={`/`}
           >
-            {title}
+            <Image fixed={titleImage.childImageSharp.fixed} />
           </Link>
         </h3>
       )

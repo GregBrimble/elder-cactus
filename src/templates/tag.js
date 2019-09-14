@@ -12,7 +12,11 @@ class TagTemplate extends React.Component {
     const comics = data.allMarkdownRemark.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        location={this.props.location}
+        title={siteTitle}
+        titleImage={data.titleImage}
+      >
         <SEO title="Tags" />
         {comics.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
@@ -60,6 +64,13 @@ export const pageQuery = graphql`
             title
             tags
           }
+        }
+      }
+    }
+    titleImage: file(absolutePath: { regex: "/image_Title.png/" }) {
+      childImageSharp {
+        fixed(width: 300) {
+          ...GatsbyImageSharpFixed
         }
       }
     }

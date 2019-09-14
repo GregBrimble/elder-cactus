@@ -10,10 +10,16 @@ class NotFoundPage extends React.Component {
     const siteTitle = data.site.siteMetadata.title
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        location={this.props.location}
+        title={siteTitle}
+        titleImage={data.titleImage}
+      >
         <SEO title="404: Not Found" />
         <h1>Not Found</h1>
-        <p>That comic doesn&#39;t exist... yet. <Link to={`/`}>Go home</Link>.</p>
+        <p>
+          That comic doesn&#39;t exist... yet. <Link to={`/`}>Go home</Link>.
+        </p>
       </Layout>
     )
   }
@@ -26,6 +32,13 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    titleImage: file(absolutePath: { regex: "/image_Title.png/" }) {
+      childImageSharp {
+        fixed(width: 300) {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
   }

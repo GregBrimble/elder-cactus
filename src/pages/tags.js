@@ -15,7 +15,11 @@ class TagsPage extends React.Component {
     ]
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        location={this.props.location}
+        title={siteTitle}
+        titleImage={data.titleImage}
+      >
         <SEO title="Tags" />
         {tags.map(tag => {
           return (
@@ -55,6 +59,13 @@ export const pageQuery = graphql`
           frontmatter {
             tags
           }
+        }
+      }
+    }
+    titleImage: file(absolutePath: { regex: "/image_Title.png/" }) {
+      childImageSharp {
+        fixed(width: 300) {
+          ...GatsbyImageSharpFixed
         }
       }
     }

@@ -35,7 +35,11 @@ class ComicTemplate extends React.Component {
     }
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <Layout
+        location={this.props.location}
+        title={siteTitle}
+        titleImage={this.props.data.titleImage}
+      >
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description}
@@ -150,6 +154,13 @@ export const pageQuery = graphql`
           }
           extension
           publicURL
+        }
+      }
+    }
+    titleImage: file(absolutePath: { regex: "/image_Title.png/" }) {
+      childImageSharp {
+        fixed(width: 300) {
+          ...GatsbyImageSharpFixed
         }
       }
     }
