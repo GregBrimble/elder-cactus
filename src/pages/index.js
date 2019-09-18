@@ -71,7 +71,7 @@ class HomePage extends React.Component {
                   alt={`Patreon`}
                 ></Image>
               </a>
-              <a
+              {/* <a
                 href={data.site.siteMetadata.social.youTube}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
@@ -80,7 +80,7 @@ class HomePage extends React.Component {
                   fluid={data.youtube.childImageSharp.fluid}
                   alt={`YouTube`}
                 ></Image>
-              </a>
+              </a> */}
               <a
                 href={data.site.siteMetadata.social.twitter}
                 target={`_blank`}
