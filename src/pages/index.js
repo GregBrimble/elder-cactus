@@ -61,7 +61,7 @@ class HomePage extends React.Component {
                   alt={`Subreddit`}
                 ></Image>
               </a>
-              <a
+              {/* <a
                 href={data.site.siteMetadata.social.patreon}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
@@ -70,7 +70,7 @@ class HomePage extends React.Component {
                   fluid={data.patreon.childImageSharp.fluid}
                   alt={`Patreon`}
                 ></Image>
-              </a>
+              </a> */}
               {/* <a
                 href={data.site.siteMetadata.social.youTube}
                 target={`_blank`}
