@@ -11,6 +11,7 @@ module.exports = {
       patreon: "https://www.patreon.com/eldercactus",
       youTube: "https://www.youtube.com/channel/UCi-2kUme4vi-n4ST_9UVc1A",
       twitter: "https://twitter.com/eldercactus",
+      instagram: "https://www.instagram.com/eldercactus",
     },
   },
   plugins: [

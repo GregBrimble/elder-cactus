@@ -39,16 +39,6 @@ class HomePage extends React.Component {
                   alt={`KnightQuest`}
                 ></Image>
               </a>
-              <a
-                href={data.site.siteMetadata.social.facebook}
-                target={`_blank`}
-                rel={`noopener noreferrer`}
-              >
-                <Image
-                  fluid={data.facebook.childImageSharp.fluid}
-                  alt={`Facebook`}
-                ></Image>
-              </a>
             </Col>
             <Col sm={5}>
               <a
@@ -89,6 +79,26 @@ class HomePage extends React.Component {
                 <Image
                   fluid={data.twitter.childImageSharp.fluid}
                   alt={`Twitter`}
+                ></Image>
+              </a>
+              <a
+                href={data.site.siteMetadata.social.instagram}
+                target={`_blank`}
+                rel={`noopener noreferrer`}
+              >
+                <Image
+                  fluid={data.instagram.childImageSharp.fluid}
+                  alt={`Instagram`}
+                ></Image>
+              </a>
+              <a
+                href={data.site.siteMetadata.social.facebook}
+                target={`_blank`}
+                rel={`noopener noreferrer`}
+              >
+                <Image
+                  fluid={data.facebook.childImageSharp.fluid}
+                  alt={`Facebook`}
                 ></Image>
               </a>
             </Col>
@@ -152,6 +162,13 @@ export const pageQuery = graphql`
         }
       }
     }
+    instagram: file(absolutePath: { regex: "/button_Instagram.png/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     site {
       siteMetadata {
         title
@@ -162,6 +179,7 @@ export const pageQuery = graphql`
           patreon
           youTube
           twitter
+          instagram
         }
       }
     }
