@@ -35,6 +35,7 @@ collections:
           name: "bestOf",
           widget: "boolean",
           hint: "Add this comic to the 'Best Of' collection",
+          required: false,
         }
 
       - {
