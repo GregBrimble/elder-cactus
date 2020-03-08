@@ -43,18 +43,16 @@ class ComicTemplate extends React.Component {
     }
 
     if (secondaryImage) {
-      console.log(post.frontmatter)
       section = (
         <>
           {section}
-          <div style={{ margin: "auto", textAlign: "center" }}>
+          <div style={{ margin: "auto", textAlign: "center", maxWidth: 512 }}>
             <a
               href={secondaryImageLink}
               target={`_blank`}
               rel={`noopener noreferrer`}
             >
               <Image fluid={secondaryImage.childImageSharp.fluid}></Image>
-              Secondary Image Here!
             </a>
           </div>
         </>
@@ -184,7 +182,7 @@ export const pageQuery = graphql`
         }
         secondaryImage {
           childImageSharp {
-            fluid(maxWidth: 320) {
+            fluid(maxWidth: 512) {
               ...GatsbyImageSharpFluid
             }
           }
