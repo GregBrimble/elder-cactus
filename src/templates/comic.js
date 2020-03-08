@@ -9,11 +9,10 @@ class ComicTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const image = post.frontmatter.image
-    const secondaryImage = post.frontmatter.secondaryImage
+    const { image, secondaryImage, secondaryImageLink } = post.frontmatter
     const bestOf = this.props.location.state?.bestOf || false
     let next, previous
-    let section
+    let section = <></>
 
     if (bestOf) {
       next = this.props.data.nextBestOf.edges[0]?.node
@@ -43,12 +42,21 @@ class ComicTemplate extends React.Component {
       }
     }
 
-    console.log(post.frontmatter)
     if (secondaryImage) {
+      console.log(post.frontmatter)
       section = (
         <>
           {section}
-          <Image fluid={secondaryImage.childImageSharp.fluid}></Image>
+          <div style={{ margin: "auto", textAlign: "center" }}>
+            <a
+              href={secondaryImageLink}
+              target={`_blank`}
+              rel={`noopener noreferrer`}
+            >
+              <Image fluid={secondaryImage.childImageSharp.fluid}></Image>
+              Secondary Image Here!
+            </a>
+          </div>
         </>
       )
     }
@@ -180,9 +188,8 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFluid
             }
           }
-          extension
-          publicURL
         }
+        secondaryImageLink
       }
     }
     nextBestOf: allMarkdownRemark(
