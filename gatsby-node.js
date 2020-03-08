@@ -62,7 +62,6 @@ exports.createSchemaCustomization = ({ actions }) => {
   const typeDefs = `
     type MarkdownRemarkFrontmatter {
       description: String
-      secondaryImage: File
       secondaryImageLink: String
     }
   `
