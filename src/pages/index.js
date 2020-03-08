@@ -28,12 +28,16 @@ class HomePage extends React.Component {
                   alt={`Best of Comics`}
                 ></Image>
               </Link>
-              <Link style={{ boxShadow: `none` }} to={`/store`}>
+              <a
+                href={data.site.siteMetadata.social.store}
+                target={`_blank`}
+                rel={`noopener noreferrer`}
+              >
                 <Image
                   fluid={data.theStore.childImageSharp.fluid}
                   alt={`The Store`}
                 ></Image>
-              </Link>
+              </a>
               {/* <Link style={{ boxShadow: `none` }} to={`/tags`}>
                 <Image
                   fluid={data.comicGallery.childImageSharp.fluid}

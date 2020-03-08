@@ -6,6 +6,7 @@ module.exports = {
     siteUrl: `https://www.eldercactus.com/`,
     social: {
       knightQuest: "https://www.youtube.com/watch?v=uiINuHxz160",
+      store: "https://www.redbubble.com/people/eldercactus/shop",
       facebook: "https://www.facebook.com/Elder-Cactus-Comics-106361110754353",
       reddit: "https://old.reddit.com/r/eldercactus/",
       patreon: "https://www.patreon.com/eldercactus",
