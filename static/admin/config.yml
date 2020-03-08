@@ -37,7 +37,13 @@ collections:
           hint: "Add this comic to the 'Best Of' collection",
           required: false,
         }
-
+      - {
+          label: "Tony Lazuto?",
+          name: "tonyLazuto",
+          widget: "boolean",
+          hint: "Add this comic to the 'Tony Lazuto' collection",
+          required: false,
+        }
       - {
           label: "Comic",
           name: "image",

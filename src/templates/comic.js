@@ -11,12 +11,16 @@ class ComicTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { image, secondaryImage, secondaryImageLink } = post.frontmatter
     const bestOf = this.props.location.state?.bestOf || false
+    const tonyLazuto = this.props.location.state?.tonyLazuto || false
     let next, previous
     let section = <></>
 
     if (bestOf) {
       next = this.props.data.nextBestOf.edges[0]?.node
       previous = this.props.data.previousBestOf.edges[0]?.node
+    } else if (tonyLazuto) {
+      next = this.props.data.nextTonyLazuto.edges[0]?.node
+      previous = this.props.data.previousTonyLazuto.edges[0]?.node
     } else {
       next = this.props.data.nextArchive.edges[0]?.node
       previous = this.props.data.previousArchive.edges[0]?.node
@@ -206,6 +210,32 @@ export const pageQuery = graphql`
     previousBestOf: allMarkdownRemark(
       limit: 1
       filter: { frontmatter: { date: { lt: $date }, bestOf: { eq: true } } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    nextTonyLazuto: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { date: { gt: $date }, tonyLazuto: { eq: true } } }
+      sort: { fields: frontmatter___date, order: ASC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    previousTonyLazuto: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { date: { lt: $date }, tonyLazuto: { eq: true } } }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       edges {
