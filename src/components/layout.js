@@ -1,9 +1,8 @@
-import React from "react"
+import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from "gatsby"
 import Image from "gatsby-image"
-import "bootstrap/dist/css/bootstrap.min.css"
-
-import { rhythm, scale } from "../utils/typography"
+import React from "react"
+import { rhythm } from "../utils/typography"
 
 class Layout extends React.Component {
   render() {
@@ -12,26 +11,7 @@ class Layout extends React.Component {
     let header
 
     if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
-            to={`/`}
-          >
-            <Image fixed={titleImage.childImageSharp.fixed} />
-          </Link>
-        </h1>
-      )
+      header = <></>
     } else {
       header = (
         <h3

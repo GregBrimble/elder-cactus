@@ -1,10 +1,9 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Image from "gatsby-image"
+import React from "react"
+import Col from "react-bootstrap/Col"
 import Container from "react-bootstrap/Container"
 import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
-
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -23,13 +22,25 @@ class HomePage extends React.Component {
         <Container>
           <Row>
             <Col sm={7}>
-              <Link style={{ boxShadow: `none` }} to={`/tags`}>
+              <Link style={{ boxShadow: `none` }} to={`/best-of`}>
+                <Image
+                  fluid={data.bestOfComics.childImageSharp.fluid}
+                  alt={`Best of Comics`}
+                ></Image>
+              </Link>
+              <Link style={{ boxShadow: `none` }} to={`/store`}>
+                <Image
+                  fluid={data.theStore.childImageSharp.fluid}
+                  alt={`The Store`}
+                ></Image>
+              </Link>
+              {/* <Link style={{ boxShadow: `none` }} to={`/tags`}>
                 <Image
                   fluid={data.comicGallery.childImageSharp.fluid}
                   alt={`Comic Gallery`}
                 ></Image>
-              </Link>
-              <a
+              </Link> */}
+              {/* <a
                 href={data.site.siteMetadata.social.knightQuest}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
@@ -38,10 +49,16 @@ class HomePage extends React.Component {
                   fluid={data.knightQuest.childImageSharp.fluid}
                   alt={`KnightQuest`}
                 ></Image>
-              </a>
+              </a> */}
             </Col>
             <Col sm={5}>
-              <a
+              <Link style={{ boxShadow: `none` }} to={`/archive`}>
+                <Image
+                  fluid={data.theArchive.childImageSharp.fluid}
+                  alt={`The Archive`}
+                ></Image>
+              </Link>
+              {/* <a
                 href={data.site.siteMetadata.social.reddit}
                 target={`_blank`}
                 rel={`noopener noreferrer`}
@@ -50,7 +67,7 @@ class HomePage extends React.Component {
                   fluid={data.reddit.childImageSharp.fluid}
                   alt={`Subreddit`}
                 ></Image>
-              </a>
+              </a> */}
               {/* <a
                 href={data.site.siteMetadata.social.patreon}
                 target={`_blank`}
@@ -113,6 +130,27 @@ export default HomePage
 
 export const pageQuery = graphql`
   query {
+    bestOfComics: file(absolutePath: { regex: "/button_Best-of-Comics.png/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    theStore: file(absolutePath: { regex: "/button_The-Store.png/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    theArchive: file(absolutePath: { regex: "/button_The-Archive.png/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
     comicGallery: file(absolutePath: { regex: "/button_Comic-Gallery.png/" }) {
       childImageSharp {
         fluid {

@@ -1,6 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const { fmImagesToRelative } = require("gatsby-remark-relative-images")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -10,9 +10,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-        ) {
+        allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
           edges {
             node {
               fields {
@@ -34,15 +32,17 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   const comics = result.data.allMarkdownRemark.edges
-  const tags = [...new Set(comics.map(comic => comic.node.frontmatter.tags).flat())]
+  const tags = [
+    ...new Set(comics.map(comic => comic.node.frontmatter.tags).flat()),
+  ]
 
-  tags.forEach((tag) => {
+  tags.forEach(tag => {
     createPage({
       path: `tags/${tag}`,
       component: tagPage,
       context: {
-        tag
-      }
+        tag,
+      },
     })
   })
 
@@ -64,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
-  fmImagesToRelative(node);
+  fmImagesToRelative(node)
 
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })
@@ -74,4 +74,14 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type MarkdownRemarkFrontmatter {
+      description: String
+    }
+  `
+  createTypes(typeDefs)
 }
