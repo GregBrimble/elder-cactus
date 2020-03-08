@@ -20,10 +20,39 @@ collections:
     slug: "{{slug}}"
     preview_path: "{{slug}}"
     editor:
-     preview: false
+      preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "string",
+          required: false,
+        }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Comic", name: "image", widget: "image", "allow_multiple": false }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Description", name: "description", widget: "string", required: false }
+      - {
+          label: "Best of?",
+          name: "bestOf",
+          widget: "boolean",
+          hint: "Add this comic to the 'Best Of' collection",
+        }
+
+      - {
+          label: "Comic",
+          name: "image",
+          widget: "image",
+          "allow_multiple": false,
+        }
+      - {
+          label: "Secondary Image",
+          name: "secondaryImage",
+          widget: "image",
+          "allow_multiple": false,
+          required: false,
+        }
+      - {
+          label: "Secondary Image Link",
+          name: "secondaryImageLink",
+          widget: "string",
+          required: false,
+        }

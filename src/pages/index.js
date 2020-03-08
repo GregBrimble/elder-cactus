@@ -22,7 +22,11 @@ class HomePage extends React.Component {
         <Container>
           <Row>
             <Col sm={7}>
-              <Link style={{ boxShadow: `none` }} to={`/best-of`}>
+              <Link
+                style={{ boxShadow: `none` }}
+                to={data.latestBestOf.edges[0].node.fields.slug}
+                state={{ bestOf: true }}
+              >
                 <Image
                   fluid={data.bestOfComics.childImageSharp.fluid}
                   alt={`Best of Comics`}
@@ -56,7 +60,11 @@ class HomePage extends React.Component {
               </a> */}
             </Col>
             <Col sm={5}>
-              <Link style={{ boxShadow: `none` }} to={`/archive`}>
+              <Link
+                style={{ boxShadow: `none` }}
+                to={data.latestArchive.edges[0].node.fields.slug}
+                state={{ bestOf: false }}
+              >
                 <Image
                   fluid={data.theArchive.childImageSharp.fluid}
                   alt={`The Archive`}
@@ -162,13 +170,13 @@ export const pageQuery = graphql`
         }
       }
     }
-    knightQuest: file(absolutePath: { regex: "/button_KnightQuest.png/" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
+    # knightQuest: file(absolutePath: { regex: "/button_KnightQuest.png/" }) {
+    #   childImageSharp {
+    #     fluid {
+    #       ...GatsbyImageSharpFluid
+    #     }
+    #   }
+    # }
     facebook: file(absolutePath: { regex: "/button_Facebook.png/" }) {
       childImageSharp {
         fluid {
@@ -176,27 +184,27 @@ export const pageQuery = graphql`
         }
       }
     }
-    reddit: file(absolutePath: { regex: "/button_Reddit.png/" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    patreon: file(absolutePath: { regex: "/button_Patreon.png/" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    youtube: file(absolutePath: { regex: "/button_YouTube.png/" }) {
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
+    # reddit: file(absolutePath: { regex: "/button_Reddit.png/" }) {
+    #   childImageSharp {
+    #     fluid {
+    #       ...GatsbyImageSharpFluid
+    #     }
+    #   }
+    # }
+    # patreon: file(absolutePath: { regex: "/button_Patreon.png/" }) {
+    #   childImageSharp {
+    #     fluid {
+    #       ...GatsbyImageSharpFluid
+    #     }
+    #   }
+    # }
+    # youtube: file(absolutePath: { regex: "/button_YouTube.png/" }) {
+    #   childImageSharp {
+    #     fluid {
+    #       ...GatsbyImageSharpFluid
+    #     }
+    #   }
+    # }
     twitter: file(absolutePath: { regex: "/button_Twitter.png/" }) {
       childImageSharp {
         fluid {
@@ -215,22 +223,48 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         social {
-          knightQuest
+          # knightQuest
+          store
           facebook
-          reddit
-          patreon
-          youTube
+          # reddit
+          # patreon
+          # youTube
           twitter
           instagram
         }
       }
     }
-    titleImage: file(absolutePath: { regex: "/image_Title.png/" }) {
-      childImageSharp {
-        fixed(width: 400) {
-          ...GatsbyImageSharpFixed
+    latestArchive: allMarkdownRemark(
+      limit: 1
+      sort: { order: DESC, fields: frontmatter___date }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
         }
       }
     }
+    latestBestOf: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { bestOf: { eq: true } } }
+      sort: { order: DESC, fields: frontmatter___date }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    # titleImage: file(absolutePath: { regex: "/image_Title.png/" }) {
+    #   childImageSharp {
+    #     fixed(width: 400) {
+    #       ...GatsbyImageSharpFixed
+    #     }
+    #   }
+    # }
   }
 `

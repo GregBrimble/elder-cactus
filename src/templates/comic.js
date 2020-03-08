@@ -1,7 +1,6 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Image from "gatsby-image"
-
+import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
@@ -10,9 +9,19 @@ class ComicTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
     const image = post.frontmatter.image
+    const secondaryImage = post.frontmatter.secondaryImage
+    const bestOf = this.props.location.state?.bestOf || false
+    let next, previous
     let section
+
+    if (bestOf) {
+      next = this.props.data.nextBestOf.edges[0]?.node
+      previous = this.props.data.previousBestOf.edges[0]?.node
+    } else {
+      next = this.props.data.nextArchive.edges[0]?.node
+      previous = this.props.data.previousArchive.edges[0]?.node
+    }
 
     if (image) {
       if (!image.childImageSharp && image.extension === "svg") {
@@ -32,6 +41,16 @@ class ComicTemplate extends React.Component {
           />
         )
       }
+    }
+
+    console.log(post.frontmatter)
+    if (secondaryImage) {
+      section = (
+        <>
+          {section}
+          <Image fluid={secondaryImage.childImageSharp.fluid}></Image>
+        </>
+      )
     }
 
     return (
@@ -120,7 +139,7 @@ class ComicTemplate extends React.Component {
 export default ComicTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPostBySlug($slug: String!, $date: Date!) {
     site {
       siteMetadata {
         title
@@ -148,12 +167,73 @@ export const pageQuery = graphql`
         description
         image {
           childImageSharp {
-            fluid(maxWidth: 680) {
+            fluid(maxWidth: 854) {
               ...GatsbyImageSharpFluid
             }
           }
           extension
           publicURL
+        }
+        secondaryImage {
+          childImageSharp {
+            fluid(maxWidth: 320) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+          extension
+          publicURL
+        }
+      }
+    }
+    nextBestOf: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { date: { gt: $date }, bestOf: { eq: true } } }
+      sort: { fields: frontmatter___date, order: ASC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    previousBestOf: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { date: { lt: $date }, bestOf: { eq: true } } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    nextArchive: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { date: { gt: $date } } }
+      sort: { fields: frontmatter___date, order: ASC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    previousArchive: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { date: { lt: $date } } }
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
         }
       }
     }
