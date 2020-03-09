@@ -113,6 +113,7 @@ class ComicTemplate extends React.Component {
                   }}
                   to={previous.fields.slug}
                   rel="prev"
+                  state={{ bestOf, tonyLazuto }}
                 >
                   <Image
                     fixed={this.props.data.previous.childImageSharp.fixed}
@@ -131,6 +132,7 @@ class ComicTemplate extends React.Component {
                   }}
                   to={next.fields.slug}
                   rel="next"
+                  state={{ bestOf, tonyLazuto }}
                 >
                   <Image
                     fixed={this.props.data.next.childImageSharp.fixed}
