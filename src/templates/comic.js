@@ -56,7 +56,12 @@ class ComicTemplate extends React.Component {
               target={`_blank`}
               rel={`noopener noreferrer`}
             >
-              <Image fluid={secondaryImage.childImageSharp.fluid}></Image>
+              <Image
+                fluid={secondaryImage.childImageSharp.fluid}
+                style={{
+                  display: post.fields.slug === "/he-hath-risen/" ? "none" : "",
+                }}
+              ></Image>
             </a>
           </div>
         </>
@@ -174,6 +179,9 @@ export const pageQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         description
