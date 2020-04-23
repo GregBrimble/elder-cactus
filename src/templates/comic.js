@@ -259,7 +259,13 @@ export const pageQuery = graphql`
     }
     nextArchive: allMarkdownRemark(
       limit: 1
-      filter: { frontmatter: { date: { gt: $date } } }
+      filter: {
+        frontmatter: {
+          date: { gt: $date }
+          bestOf: { ne: true }
+          tonyLazuto: { ne: true }
+        }
+      }
       sort: { fields: frontmatter___date, order: ASC }
     ) {
       edges {
@@ -272,7 +278,13 @@ export const pageQuery = graphql`
     }
     previousArchive: allMarkdownRemark(
       limit: 1
-      filter: { frontmatter: { date: { lt: $date } } }
+      filter: {
+        frontmatter: {
+          date: { lt: $date }
+          bestOf: { ne: true }
+          tonyLazuto: { ne: true }
+        }
+      }
       sort: { fields: frontmatter___date, order: DESC }
     ) {
       edges {

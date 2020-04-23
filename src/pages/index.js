@@ -42,6 +42,16 @@ class HomePage extends React.Component {
                   alt={`The Store`}
                 ></Image>
               </a>
+              <a
+                href={data.site.siteMetadata.social.facebook}
+                target={`_blank`}
+                rel={`noopener noreferrer`}
+              >
+                <Image
+                  fluid={data.facebook.childImageSharp.fluid}
+                  alt={`Facebook`}
+                ></Image>
+              </a>
               {/* <Link style={{ boxShadow: `none` }} to={`/tags`}>
                 <Image
                   fluid={data.comicGallery.childImageSharp.fluid}
@@ -63,11 +73,20 @@ class HomePage extends React.Component {
               <Link
                 style={{ boxShadow: `none` }}
                 to={data.latestArchive.edges[0].node.fields.slug}
-                state={{ bestOf: false }}
               >
                 <Image
                   fluid={data.theArchive.childImageSharp.fluid}
                   alt={`The Archive`}
+                ></Image>
+              </Link>
+              <Link
+                style={{ boxShadow: `none` }}
+                to={data.latestTonyLazuto.edges[0].node.fields.slug}
+                state={{ tonyLazuto: true }}
+              >
+                <Image
+                  fluid={data.tonyLazutoComics.childImageSharp.fluid}
+                  alt={`Tony Lazuto Comics`}
                 ></Image>
               </Link>
               {/* <a
@@ -120,16 +139,6 @@ class HomePage extends React.Component {
                   alt={`Instagram`}
                 ></Image>
               </a>
-              <a
-                href={data.site.siteMetadata.social.facebook}
-                target={`_blank`}
-                rel={`noopener noreferrer`}
-              >
-                <Image
-                  fluid={data.facebook.childImageSharp.fluid}
-                  alt={`Facebook`}
-                ></Image>
-              </a>
             </Col>
           </Row>
         </Container>
@@ -143,6 +152,15 @@ export default HomePage
 export const pageQuery = graphql`
   query {
     bestOfComics: file(absolutePath: { regex: "/button_Best-of-Comics.png/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    tonyLazutoComics: file(
+      absolutePath: { regex: "/button_Tony-Lazuto.png/" }
+    ) {
       childImageSharp {
         fluid {
           ...GatsbyImageSharpFluid
@@ -236,6 +254,9 @@ export const pageQuery = graphql`
     }
     latestArchive: allMarkdownRemark(
       limit: 1
+      filter: {
+        frontmatter: { tonyLazuto: { ne: true }, bestOf: { ne: true } }
+      }
       sort: { order: DESC, fields: frontmatter___date }
     ) {
       edges {
@@ -249,6 +270,19 @@ export const pageQuery = graphql`
     latestBestOf: allMarkdownRemark(
       limit: 1
       filter: { frontmatter: { bestOf: { eq: true } } }
+      sort: { order: DESC, fields: frontmatter___date }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+        }
+      }
+    }
+    latestTonyLazuto: allMarkdownRemark(
+      limit: 1
+      filter: { frontmatter: { tonyLazuto: { eq: true } } }
       sort: { order: DESC, fields: frontmatter___date }
     ) {
       edges {

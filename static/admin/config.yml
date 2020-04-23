@@ -1,5 +1,11 @@
 backend:
   name: git-gateway
+  commit_messages:
+    create: [skip netlify] Create "{{slug}}"
+    update: [skip netlify] Update "{{slug}}"
+    delete: [skip netlify] Delete "{{slug}}"
+    uploadMedia: [skip netlify] Upload "{{path}}"
+    deleteMedia: [skip netlify] Delete "{{path}}"
   branch: master
 
 media_folder: static/comics
