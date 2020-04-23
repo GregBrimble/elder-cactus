@@ -10,15 +10,15 @@ class ComicTemplate extends React.Component {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { image, secondaryImage, secondaryImageLink } = post.frontmatter
-    const bestOf = this.props.location.state?.bestOf || false
-    const tonyLazuto = this.props.location.state?.tonyLazuto || false
+    const bestOfMode = this.props.location.state?.bestOf || false
+    const tonyLazutoMode = this.props.location.state?.tonyLazuto || false
     let next, previous
     let section = <></>
 
-    if (bestOf) {
+    if (bestOfMode) {
       next = this.props.data.nextBestOf.edges[0]?.node
       previous = this.props.data.previousBestOf.edges[0]?.node
-    } else if (tonyLazuto) {
+    } else if (tonyLazutoMode) {
       next = this.props.data.nextTonyLazuto.edges[0]?.node
       previous = this.props.data.previousTonyLazuto.edges[0]?.node
     } else {
@@ -118,7 +118,7 @@ class ComicTemplate extends React.Component {
                   }}
                   to={previous.fields.slug}
                   rel="prev"
-                  state={{ bestOf, tonyLazuto }}
+                  state={{ bestOf: bestOfMode, tonyLazuto: tonyLazutoMode }}
                 >
                   <Image
                     fixed={this.props.data.previous.childImageSharp.fixed}
@@ -137,7 +137,7 @@ class ComicTemplate extends React.Component {
                   }}
                   to={next.fields.slug}
                   rel="next"
-                  state={{ bestOf, tonyLazuto }}
+                  state={{ bestOf: bestOfMode, tonyLazuto: tonyLazutoMode }}
                 >
                   <Image
                     fixed={this.props.data.next.childImageSharp.fixed}
@@ -178,13 +178,14 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
-      html
       fields {
         slug
       }
       frontmatter {
         title
         description
+        bestOf
+        tonyLazuto
         image {
           childImageSharp {
             fluid(maxWidth: 854) {
