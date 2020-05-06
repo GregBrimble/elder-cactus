@@ -9,9 +9,16 @@ class ComicTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
-    const { image, secondaryImage, secondaryImageLink } = post.frontmatter
-    const bestOfMode = this.props.location.state?.bestOf || false
-    const tonyLazutoMode = this.props.location.state?.tonyLazuto || false
+    const {
+      image,
+      secondaryImage,
+      secondaryImageLink,
+      bestOf,
+      tonyLazuto,
+    } = post.frontmatter
+    const bestOfMode = this.props.location.state?.bestOf || bestOf || false
+    const tonyLazutoMode =
+      this.props.location.state?.tonyLazuto || tonyLazuto || false
     let next, previous
     let section = <></>
 
